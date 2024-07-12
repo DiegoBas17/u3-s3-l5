@@ -1,11 +1,9 @@
 import { useEffect, useState } from "react";
 import { Col } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import { ADD_TRACK } from "../action/action";
+import SingleTrack from "./SingleTrack";
 
 const CardsTrack = ({ artistName }) => {
   const [arrayTracks, setArrayTracks] = useState();
-  const dispatch = useDispatch();
 
   const fillMusicSection = async (artistName) => {
     try {
@@ -32,30 +30,13 @@ const CardsTrack = ({ artistName }) => {
     fillMusicSection(artistName);
   }, []);
 
-  const handleClick = (track) => {
-    dispatch({
-      type: ADD_TRACK,
-      payload: track,
-    });
-  };
-
   return (
     <>
       {arrayTracks &&
         arrayTracks.map((singleSong, index) => {
           return (
             <Col className="text-center" key={index}>
-              <img
-                className="img-fluid"
-                src={singleSong.album.cover_medium}
-                alt="track"
-                onClick={() => handleClick(singleSong)}
-              />
-              <p>
-                Track: {singleSong.title}
-                <br />
-                Artist:{singleSong.artist.name}
-              </p>
+              <SingleTrack singleSong={singleSong} />
             </Col>
           );
         })}
