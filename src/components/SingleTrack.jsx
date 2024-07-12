@@ -9,7 +9,7 @@ const SingleTrack = ({ singleSong }) => {
   const isFavorite = favoriteTracks.some(
     (tracks) => tracks.id === singleSong.id
   );
-  console.log(singleSong);
+  console.log("single", singleSong);
 
   const handleClick = (track) => {
     dispatch({
@@ -33,7 +33,7 @@ const SingleTrack = ({ singleSong }) => {
 
   return (
     <>
-      {singleSong && (
+      {singleSong.lenght > 0 && (
         <>
           <img
             className="img-fluid"

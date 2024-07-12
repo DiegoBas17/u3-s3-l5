@@ -8,8 +8,8 @@ const CardsTrack = (props) => {
   const { artistName, tipo } = props;
   const dispatch = useDispatch();
   const objState = useSelector((state) => state.fetchTracks);
-  console.log(objState);
-  let arrayTracks = "";
+
+  let arrayTracks = [];
   switch (tipo) {
     case "ROCKCLASSIC":
       arrayTracks = objState.rockClassic.content;
@@ -28,18 +28,15 @@ const CardsTrack = (props) => {
   useEffect(() => {
     dispatch(fetchTracksAction(artistName, tipo));
   }, [artistName, tipo, dispatch]);
-
+  console.log("arrayTracks", arrayTracks);
   return (
     <>
-      {arrayTracks && arrayTracks.length > 0 ? (
-        arrayTracks.map((singleSong, index) => (
+      {arrayTracks.lenght > 0 &&
+        arrayTracks[0].map((singleSong, index) => (
           <Col className="text-center" key={index}>
             <SingleTrack singleSong={singleSong} />
           </Col>
-        ))
-      ) : (
-        <p>No tracks available</p>
-      )}
+        ))}
     </>
   );
 };
