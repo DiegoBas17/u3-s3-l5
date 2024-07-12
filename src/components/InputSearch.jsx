@@ -15,7 +15,7 @@ const InputSearch = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    dispatch(fetchTracksAction(query));
+    dispatch(fetchTracksAction(query, "SEARCH"));
     navigate("/search/" + query);
   };
   return (
