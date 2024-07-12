@@ -26,7 +26,7 @@ const Home = () => {
                 className="imgLinks py-3"
                 id="rockSection"
               >
-                <CardsTrack artistName={"queen"} />
+                <CardsTrack artistName={"queen"} tipo={"ROCKCLASSIC"} />
               </Row>
             </div>
           </Col>
@@ -43,7 +43,7 @@ const Home = () => {
                 className="imgLinks py-3"
                 id="popSection"
               >
-                <CardsTrack artistName={"katyperry"} />
+                <CardsTrack artistName={"katyperry"} tipo={"POPCULTURE"} />
               </Row>
             </div>
           </Col>
@@ -60,7 +60,7 @@ const Home = () => {
                 className="imgLinks py-3"
                 id="hipHopSection"
               >
-                <CardsTrack artistName={"eminem"} />
+                <CardsTrack artistName={"eminem"} tipo={"HIPHOP"} />
               </Row>
             </div>
           </Col>

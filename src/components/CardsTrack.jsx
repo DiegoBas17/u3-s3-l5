@@ -1,46 +1,47 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Col } from "react-bootstrap";
 import SingleTrack from "./SingleTrack";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchTracksAction } from "../action/action";
 
-const CardsTrack = ({ artistName }) => {
-  const [arrayTracks, setArrayTracks] = useState();
+const CardsTrack = (props) => {
+  const { artistName, tipo } = props;
+  const dispatch = useDispatch();
+  const objState = useSelector((state) => state.fetchTracks);
+  console.log(objState);
+  let arrayTracks = "";
+  switch (tipo) {
+    case "ROCKCLASSIC":
+      arrayTracks = objState.rockClassic.content;
+      break;
+    case "POPCULTURE":
+      arrayTracks = objState.popCulture.content;
+      break;
+    case "HIPHOP":
+      arrayTracks = objState.hipHop.content;
+      break;
 
-  const fillMusicSection = async (artistName) => {
-    try {
-      let response = await fetch(
-        "https://striveschool-api.herokuapp.com/api/deezer/search?q=" +
-          artistName
-      );
-      if (response.ok) {
-        let { data } = await response.json();
-        let arrayFourTracks = [];
-        for (let i = 0; i < 4; i++) {
-          arrayFourTracks.push(data[i]);
-        }
-        setArrayTracks(arrayFourTracks);
-      } else {
-        throw new Error("Error in fetching songs");
-      }
-    } catch (err) {
-      console.log("error", err);
-    }
-  };
+    default:
+      break;
+  }
 
   useEffect(() => {
-    fillMusicSection(artistName);
-  }, []);
+    dispatch(fetchTracksAction(artistName, tipo));
+  }, [artistName, tipo, dispatch]);
 
   return (
     <>
-      {arrayTracks &&
-        arrayTracks.map((singleSong, index) => {
-          return (
-            <Col className="text-center" key={index}>
-              <SingleTrack singleSong={singleSong} />
-            </Col>
-          );
-        })}
+      {arrayTracks && arrayTracks.length > 0 ? (
+        arrayTracks.map((singleSong, index) => (
+          <Col className="text-center" key={index}>
+            <SingleTrack singleSong={singleSong} />
+          </Col>
+        ))
+      ) : (
+        <p>No tracks available</p>
+      )}
     </>
   );
 };
+
 export default CardsTrack;

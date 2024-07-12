@@ -9,6 +9,7 @@ const SingleTrack = ({ singleSong }) => {
   const isFavorite = favoriteTracks.some(
     (tracks) => tracks.id === singleSong.id
   );
+  console.log(singleSong);
 
   const handleClick = (track) => {
     dispatch({
@@ -32,28 +33,35 @@ const SingleTrack = ({ singleSong }) => {
 
   return (
     <>
-      <img
-        className="img-fluid"
-        src={singleSong.album.cover_medium}
-        alt="track"
-        onClick={() => handleClick(singleSong)}
-      />
-      <div>
-        {isFavorite ? (
-          <HeartFill
-            fill="red"
-            onClick={handleClickFavorite}
-            style={{ cursor: "pointer" }}
+      {singleSong && (
+        <>
+          <img
+            className="img-fluid"
+            src={singleSong.album.cover_medium}
+            alt="track"
+            onClick={() => handleClick(singleSong)}
           />
-        ) : (
-          <Heart onClick={handleClickFavorite} style={{ cursor: "pointer" }} />
-        )}
-      </div>
-      <p>
-        Track: {singleSong.title}
-        <br />
-        Artist:{singleSong.artist.name}
-      </p>
+          <div>
+            {isFavorite ? (
+              <HeartFill
+                fill="red"
+                onClick={handleClickFavorite}
+                style={{ cursor: "pointer" }}
+              />
+            ) : (
+              <Heart
+                onClick={handleClickFavorite}
+                style={{ cursor: "pointer" }}
+              />
+            )}
+          </div>
+          <p>
+            Track: {singleSong.title}
+            <br />
+            Artist:{singleSong.artist.name}
+          </p>
+        </>
+      )}
     </>
   );
 };
