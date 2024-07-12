@@ -1,6 +1,7 @@
 import { Col } from "react-bootstrap";
 import logo from "../logo/logo.png";
 import { BookFill, HouseDoorFill } from "react-bootstrap-icons";
+import InputSearch from "./InputSearch";
 
 const MyNavbar = () => {
   return (
@@ -44,19 +45,7 @@ const MyNavbar = () => {
                   </a>
                 </li>
                 <li>
-                  <div className="input-group mt-3">
-                    <input
-                      type="text"
-                      className="form-control"
-                      placeholder="Search"
-                      aria-label="Search"
-                    />
-                    <div className="input-group-append">
-                      <button className="btn btn-outline-secondary btn-sm h-100">
-                        GO
-                      </button>
-                    </div>
-                  </div>
+                  <InputSearch />
                 </li>
               </ul>
             </div>

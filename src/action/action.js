@@ -15,11 +15,17 @@ export const fetchTracksAction = (artistName, actionType) => {
         for (let i = 0; i < 4; i++) {
           arrayFourTracks.push(data[i]);
         }
-        /* if actionType===search */
-        dispatch({
-          type: actionType,
-          payload: arrayFourTracks,
-        });
+        if (actionType === "SEARCH") {
+          dispatch({
+            type: actionType,
+            payload: data,
+          });
+        } else {
+          dispatch({
+            type: actionType,
+            payload: arrayFourTracks,
+          });
+        }
       } else {
         throw new Error("Error in fetching songs");
       }

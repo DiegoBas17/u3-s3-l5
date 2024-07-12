@@ -5,6 +5,7 @@ import Home from "./components/Home";
 import { Container, Row } from "react-bootstrap";
 import MyNavbar from "./components/MyNavbar";
 import Player from "./components/Player";
+import SearchPage from "./components/SearchPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <MyNavbar />
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/search/:value" element={<SearchPage />} />
           </Routes>
         </Row>
       </Container>

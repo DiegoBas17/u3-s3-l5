@@ -2,6 +2,7 @@ const initialState = {
   rockClassic: { content: [] },
   popCulture: { content: [] },
   hipHop: { content: [] },
+  search: { content: null },
 };
 
 const fetchTracksReducers = (state = initialState, action) => {
@@ -30,6 +31,15 @@ const fetchTracksReducers = (state = initialState, action) => {
           content: action.payload,
         },
       };
+    case "SEARCH":
+      return {
+        ...state,
+        search: {
+          ...state.hipHop,
+          content: action.payload,
+        },
+      };
+
     default:
       return state;
   }
