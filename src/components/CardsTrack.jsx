@@ -31,7 +31,7 @@ const CardsTrack = (props) => {
   console.log("arrayTracks", arrayTracks);
   return (
     <>
-      {arrayTracks.lenght > 0 &&
+      {arrayTracks[0] &&
         arrayTracks[0].map((singleSong, index) => (
           <Col className="text-center" key={index}>
             <SingleTrack singleSong={singleSong} />

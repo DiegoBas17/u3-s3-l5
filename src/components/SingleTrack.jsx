@@ -33,7 +33,7 @@ const SingleTrack = ({ singleSong }) => {
 
   return (
     <>
-      {singleSong.lenght > 0 && (
+      {singleSong && (
         <>
           <img
             className="img-fluid"
