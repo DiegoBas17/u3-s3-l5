@@ -12,7 +12,8 @@ const Player = () => {
   const dispatch = useDispatch();
   const track = useSelector((state) => state.trackSelected.content);
   const favoriteTracks = useSelector((state) => state.favoriteTracks.content);
-  const isFavorite = favoriteTracks.some((tracks) => tracks.id === track.id);
+  const isFavorite = favoriteTracks.some((tracks) => tracks.id === track?.id);
+
   const handleClickFavorite = () => {
     if (isFavorite) {
       dispatch({

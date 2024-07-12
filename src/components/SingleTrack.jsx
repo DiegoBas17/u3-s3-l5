@@ -9,7 +9,6 @@ const SingleTrack = ({ singleSong }) => {
   const isFavorite = favoriteTracks.some(
     (tracks) => tracks.id === singleSong.id
   );
-  console.log("single", singleSong);
 
   const handleClick = (track) => {
     dispatch({

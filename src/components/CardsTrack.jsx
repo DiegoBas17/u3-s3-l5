@@ -20,9 +20,6 @@ const CardsTrack = (props) => {
     case "HIPHOP":
       arrayTracks = objState.hipHop.content;
       break;
-
-    default:
-      break;
   }
 
   useEffect(() => {

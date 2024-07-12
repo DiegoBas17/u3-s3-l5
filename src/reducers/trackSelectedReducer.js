@@ -1,7 +1,7 @@
 import { ADD_TRACK } from "../action/action";
 
 const initialState = {
-  content: null,
+  content: null /* oggetto */,
 };
 
 const trackSelectedReducer = (state = initialState, action) => {
@@ -9,7 +9,7 @@ const trackSelectedReducer = (state = initialState, action) => {
     case ADD_TRACK:
       return {
         ...state,
-        content: action.payload,
+        content: action.payload /* sostitiscimi l'oggetto */,
       };
     default:
       return state;
