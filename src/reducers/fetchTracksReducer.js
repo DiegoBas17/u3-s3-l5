@@ -11,7 +11,7 @@ const fetchTracksReducers = (state = initialState, action) => {
         ...state,
         rockClassic: {
           ...state.rockClassic,
-          content: [...state.rockClassic.content, action.payload],
+          content: action.payload,
         },
       };
     case "POPCULTURE":
@@ -19,7 +19,7 @@ const fetchTracksReducers = (state = initialState, action) => {
         ...state,
         popCulture: {
           ...state.popCulture,
-          content: [...state.popCulture.content, action.payload],
+          content: action.payload,
         },
       };
     case "HIPHOP":
@@ -27,7 +27,7 @@ const fetchTracksReducers = (state = initialState, action) => {
         ...state,
         hipHop: {
           ...state.hipHop,
-          content: [...state.hipHop.content, action.payload],
+          content: action.payload,
         },
       };
     default:
